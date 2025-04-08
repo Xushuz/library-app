@@ -1,0 +1,251 @@
+/* client/src/App.css */
+
+/* --- Variables and Global Resets --- */
+:root {
+  --primary-color: #3498db;    /* Blue */
+  --secondary-color: #2ecc71;  /* Green */
+  --danger-color: #e74c3c;     /* Red */
+  --warning-color: #f39c12;    /* Orange */
+  --info-color: #3498db;       /* Blue (same as primary) */
+  --light-gray: #f8f9fa;     /* Very light gray background */
+  --medium-gray: #ced4da;    /* Borders, disabled elements */
+  --dark-gray: #495057;      /* Body text */
+  --text-on-dark: #ffffff;
+  --card-bg: #ffffff;
+  --shadow: 0 2px 8px rgba(0,0,0,0.1);
+  --border-radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px; /* Base font size */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+               Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-gray);
+  background-color: #fdfdff; /* Slightly off-white */
+  margin: 0;
+  -webkit-font-smoothing: antialiased; /* Smoother fonts */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #2980b9; /* Darker blue */
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95em;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+button:hover {
+   box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+   transform: translateY(-1px); /* Subtle lift */
+}
+button:active {
+  transform: translateY(0px); /* Press down effect */
+   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+button:disabled {
+  background-color: var(--medium-gray) !important;
+  color: #888 !important;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+
+/* --- App Layout --- */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex-grow: 1;
+  padding: 1.5rem 1rem; /* Default padding for mobile */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Loading State --- */
+.loading-app {
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh; font-size: 1.5em; color: #555;
+}
+.loading-message {
+   text-align: center; padding: 2rem; font-style: italic; color: #555;
+}
+
+
+/* --- Navbar --- */
+.navbar {
+  background-color: var(--dark-gray);
+  color: var(--text-on-dark);
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 0.5rem 1rem; /* Row gap, Column gap */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar .brand {
+  font-size: 1.6rem; font-weight: bold; color: var(--text-on-dark);
+  text-decoration: none; flex-shrink: 0; /* Prevent shrinking */
+}
+.navbar .brand:hover { text-decoration: none; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 1.5rem;
+  flex-grow: 1; /* Allow links to take space */
+  justify-content: center; /* Center links on wider screens */
+  flex-wrap: wrap; /* Allow links to wrap */
+}
+
+.nav-links a {
+  color: #eee; text-decoration: none; padding: 0.5rem 0;
+  position: relative; font-size: 1em; white-space: nowrap; /* Prevent link text wrapping */
+}
+.nav-links a:hover { color: var(--text-on-dark); text-decoration: none; }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--text-on-dark); font-weight: 500; }
+
+
+.nav-actions {
+  display: flex; align-items: center; gap: 1rem;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.user-greeting {
+  font-style: italic; color: #eee; margin-right: 0.5rem;
+  font-size: 0.95em; white-space: nowrap;
+}
+
+.logout-button, .nav-button {
+  background-color: rgba(255, 255, 255, 0.1); color: var(--text-on-dark);
+  padding: 0.5rem 1rem; border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius); font-size: 0.9em; white-space: nowrap;
+}
+.logout-button:hover, .nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+}
+.register-button { background-color: var(--primary-color); border-color: var(--primary-color); }
+.register-button:hover { background-color: #2980b9; border-color: #2980b9; }
+
+
+/* --- Forms (General Styles for Login/Register) --- */
+.auth-form { /* Styles in App.css or LoginPage.css etc */ }
+
+
+/* --- Messages --- */
+.error-message {
+  color: var(--danger-color, #c0392b); background-color: #fdecea;
+  border: 1px solid var(--danger-color, #e74c3c); padding: 0.8rem 1rem;
+  border-radius: var(--border-radius); margin: 1rem 0; font-size: 0.95em;
+}
+.success-message {
+  color: #1d643b; background-color: #d1f7e0;
+  border: 1px solid var(--secondary-color, #2ecc71); padding: 0.8rem 1rem;
+  border-radius: var(--border-radius); margin: 1rem 0; font-size: 0.95em;
+}
+
+
+/* --- Footer --- */
+.footer {
+  text-align: center; padding: 1.5rem 1rem; margin-top: 2rem;
+  background-color: #343a40; color: #adb5bd; font-size: 0.9em;
+}
+
+
+/* =========================== */
+/* --- Responsive Styles --- */
+/* =========================== */
+
+/* Medium screens (Tablets, smaller laptops) */
+@media (max-width: 992px) {
+  .nav-links {
+      gap: 1rem; /* Slightly reduce gap */
+      justify-content: flex-start; /* Align links left */
+      order: 3; /* Move links below actions on wrap */
+      width: 100%; /* Take full width when wrapped */
+      margin-top: 0.5rem;
+  }
+  .nav-actions {
+      order: 2; /* Keep actions to the right of brand */
+  }
+  .navbar .brand {
+      order: 1;
+  }
+}
+
+/* Small screens (Phones) */
+@media (max-width: 767px) {
+  html { font-size: 15px; } /* Slightly smaller base font */
+
+  .container {
+      padding: 1rem 0.8rem; /* Reduce horizontal padding */
+  }
+
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start; /* Align items left */
+  }
+  .nav-links {
+      margin-top: 0.8rem;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: 0.5rem;
+  }
+  .nav-links a {
+      width: 100%; padding: 0.6rem 0.5rem;
+  }
+  .nav-links a::after { display: none; } /* Hide underline */
+  .nav-links a.active { background-color: rgba(255,255,255,0.1); border-radius: 4px; }
+
+  .nav-actions {
+      margin-top: 1rem;
+      width: 100%;
+      justify-content: space-between; /* Space out greeting/button */
+  }
+  .user-greeting { margin-right: 0; }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  button { padding: 0.5rem 1rem; font-size: 0.9em;} /* Slightly smaller buttons */
+  .container { padding: 1rem 0.5rem; }
+  .navbar .brand { font-size: 1.4rem; }
+  .nav-actions { flex-direction: column; align-items: flex-start; gap: 0.5rem;}
+  .logout-button, .nav-button { width: 100%; text-align: center;}
+}

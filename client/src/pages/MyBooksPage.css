@@ -1,0 +1,104 @@
+/* client/src/pages/MyBooksPage.css */
+
+.my-books-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.no-books-message {
+    text-align: center; padding: 2rem; font-style: italic; color: #555;
+}
+.no-books-message a { color: var(--primary-color); text-decoration: underline; }
+
+/* Messages defined in App.css */
+
+.my-books-list {
+    display: flex; flex-direction: column; gap: 1.5rem;
+    max-width: 800px; margin: 0 auto;
+}
+
+.my-book-item {
+    background-color: var(--card-bg); border-radius: var(--border-radius);
+    box-shadow: var(--shadow); padding: 1rem 1.5rem; display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 1.5rem; align-items: flex-start; border-left: 5px solid;
+    transition: border-color 0.3s ease;
+}
+
+.my-book-item.on-time { border-left-color: var(--secondary-color); }
+.my-book-item.overdue { border-left-color: var(--danger-color); }
+
+.my-book-cover-small {
+    width: 80px; /* Reduced size slightly */
+    height: 120px;
+    object-fit: cover; border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex-shrink: 0;
+}
+
+.my-book-details { flex-grow: 1; min-width: 200px; }
+.my-book-title { margin: 0 0 0.3rem 0; font-size: 1.2em; font-weight: 600; color: #333; }
+.my-book-author { font-size: 0.9em; color: #666; margin-bottom: 0.8rem; }
+.my-book-details p { margin: 0.3rem 0; font-size: 0.95em; line-height: 1.4; }
+.my-book-details strong { color: #333; }
+
+.status-text { font-weight: bold; margin-top: 0.5rem; }
+.status-ontime { color: var(--secondary-color); }
+.status-overdue { color: var(--danger-color); }
+
+.fine-info {
+    margin-top: 1rem; padding-top: 0.8rem;
+    border-top: 1px dashed var(--medium-gray);
+}
+.fine-amount { color: var(--danger-color); font-weight: bold; font-size: 1.1em !important; margin-bottom: 0.5rem !important; }
+.paid-message { color: var(--secondary-color); font-style: italic; font-weight: bold; margin-top: 0.5rem !important; }
+.pay-button { background-color: var(--warning-color); color: white; padding: 0.5rem 1rem; font-size: 0.9em; margin-top: 0.3rem; }
+.pay-button:hover { background-color: #e67e22; }
+
+.my-book-actions {
+    margin-left: auto; /* Pushes actions right on wider screens */
+    align-self: center; /* Vertically center button */
+    flex-shrink: 0;
+}
+.my-book-actions .return-button {
+    padding: 0.6rem 1.2rem; min-width: 120px;
+    background-color: var(--info-color); color: white;
+}
+
+
+/* --- Responsive Adjustments for MyBooks --- */
+@media (max-width: 767px) {
+    .my-book-item {
+        padding: 1rem; /* Reduce padding */
+        gap: 1rem;
+    }
+     .my-book-details { min-width: 180px; } /* Adjust min-width */
+}
+
+
+@media (max-width: 600px) {
+    .my-book-item {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center image */
+        padding: 1rem;
+        gap: 1rem;
+        border-left-width: 0; /* Remove left border */
+        border-top: 5px solid; /* Add top border */
+        border-color: inherit; /* Inherit status color */
+    }
+    .my-book-cover-small { width: 100px; height: 150px; } /* Maybe make cover slightly larger */
+    .my-book-details {
+        text-align: center;
+        min-width: unset;
+        width: 100%;
+    }
+    .my-book-author { margin-bottom: 1rem; }
+    .my-book-actions {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .my-book-actions .return-button { width: auto; min-width: 150px; }
+}

@@ -1,0 +1,131 @@
+/* client/src/pages/DashboardPage.css */
+
+.dashboard-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Messages defined in App.css */
+
+.book-grid {
+    display: grid;
+    /* Start with more columns on larger screens */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.book-card {
+    background-color: var(--card-bg, #ffffff);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #eee;
+}
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.book-cover {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Maintain book cover aspect ratio */
+    object-fit: cover;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #eee;
+}
+
+.book-info {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+    color: #333;
+    /* Limit title lines */
+    line-height: 1.3;
+    max-height: 2.6em; /* Approx 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.book-author {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Pushes status down */
+}
+
+.book-status {
+    margin-top: auto; /* Aligns status to bottom */
+    padding-top: 0.5rem;
+}
+
+.book-status p { margin: 0.3rem 0; font-size: 0.9em; }
+.status-available { color: var(--secondary-color); font-weight: bold; }
+.status-borrowed { color: var(--warning-color); font-weight: bold; }
+.borrowed-info p { margin-bottom: 0.5rem; }
+.borrowed-info strong { color: #333; }
+
+/* Buttons within cards */
+.borrow-button, .return-button {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.9em;
+}
+.borrow-button { background-color: var(--secondary-color); color: white; }
+.return-button { background-color: var(--info-color); color: white; }
+
+
+/* --- Responsive Adjustments for Dashboard --- */
+
+/* Medium screens */
+@media (max-width: 992px) {
+    .book-grid {
+        /* Adjust min width slightly if needed */
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.2rem;
+    }
+}
+
+/* Small screens */
+@media (max-width: 767px) {
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    .book-title { font-size: 1em; }
+    .book-author { font-size: 0.85em; }
+    .book-info { padding: 0.75rem; }
+    .borrow-button, .return-button { font-size: 0.85em; padding: 0.5rem 0.8rem; }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .book-grid {
+        /* Maybe switch to 1 column */
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+     /* OR keep 2 columns but make them smaller */
+    /* .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.8rem;
+    } */
+    .book-info { padding: 0.6rem; }
+    .book-title { max-height: none; -webkit-line-clamp: unset; } /* Show full title if 1 column */
+}

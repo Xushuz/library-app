@@ -1,0 +1,121 @@
+/* client/src/pages/AdminPage.css */
+
+.admin-page-container h2 {
+    text-align: center; margin-bottom: 2rem; color: #333;
+}
+
+.admin-section {
+    margin-bottom: 2.5rem; padding: 1.5rem; /* Reduced padding slightly */
+    background-color: #f9f9f9; border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius); box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.admin-section h3 {
+    margin-top: 0; margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem; color: #333;
+}
+.list-heading { margin-top: 2rem; }
+
+
+/* --- Admin Form Styles --- */
+.admin-form .form-field { margin-bottom: 1.2rem; }
+.admin-form label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: #444; font-size: 0.95em; }
+.admin-form .required { color: var(--danger-color); margin-left: 0.2rem; }
+.admin-form input[type="text"], .admin-form input[type="url"] {
+    width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--medium-gray);
+    border-radius: 4px; box-sizing: border-box; font-size: 1em;
+    transition: border-color 0.2s ease;
+}
+.admin-form input:focus {
+    border-color: var(--primary-color); outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+.cover-preview {
+    max-width: 80px; /* Smaller preview */
+    max-height: 120px; margin-top: 0.5rem; border: 1px solid #ccc; display: none;
+}
+.admin-form .form-actions { margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; } /* Allow buttons to wrap */
+.admin-form .submit-button, .admin-form .cancel-button {
+    padding: 0.7rem 1.5rem; font-size: 1em; border-radius: 5px; flex-grow: 1; /* Allow buttons to grow */ min-width: 120px; /* Minimum button width */
+}
+.admin-form .submit-button { background-color: var(--primary-color); color: white; }
+.admin-form .submit-button:hover { background-color: #2980b9; }
+.admin-form .cancel-button { background-color: #aaa; color: white; }
+.admin-form .cancel-button:hover { background-color: #888; }
+.form-error { margin-bottom: 1rem; margin-top: -0.5rem; font-size: 0.9em; }
+
+
+/* --- Admin Table Styles --- */
+/* Wrapper for horizontal scrolling */
+.admin-table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0; /* Optional border around scroll area */
+    border-radius: 4px;
+}
+
+.admin-table {
+    width: 100%; /* Table takes full width OF ITS CONTAINER */
+    min-width: 700px; /* << IMPORTANT: Force table wider than small screens */
+    border-collapse: collapse;
+    background-color: #fff;
+    font-size: 0.95em;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #e0e0e0; padding: 0.7rem 0.9rem; /* Adjust padding */
+    text-align: left; vertical-align: middle;
+    white-space: nowrap; /* Prevent text wrapping in cells initially */
+}
+/* Allow wrapping for title/author if needed */
+.admin-table td:nth-child(2), /* Title column */
+.admin-table td:nth-child(3) { /* Author column */
+    white-space: normal;
+}
+
+
+.admin-table th { background-color: #f1f3f5; font-weight: 600; color: #444; }
+.admin-table tbody tr:nth-child(even) { background-color: #f8f9fa; }
+.admin-table tbody tr:hover { background-color: #e9ecef; }
+
+.admin-list-img { width: 35px; height: 50px; object-fit: cover; border-radius: 2px; vertical-align: middle; }
+.text-muted { color: #888; font-style: italic; }
+.status-available { color: var(--secondary-color); font-weight: bold; }
+.status-borrowed { color: var(--warning-color); font-weight: bold; font-size: 0.9em;}
+.role-admin { color: var(--primary-color); font-weight: bold; }
+
+.actions-cell { text-align: left; /* Align left now, buttons handle layout */ } /* Changed from right */
+.action-button {
+    margin-right: 0.5rem; /* Use right margin for spacing */
+    margin-bottom: 0.3rem; /* Add bottom margin for wrapping */
+    padding: 0.3rem 0.7rem; font-size: 0.85em; display: inline-block; /* Ensure buttons are inline */
+}
+/* Specific Button Colors (Add if not in App.css) */
+.edit-button { background-color: var(--info-color); color: white; }
+.delete-button { background-color: var(--danger-color); color: white; }
+
+
+.section-divider { border: 0; height: 1px; background-color: #ddd; margin: 3rem 0; }
+
+/* --- Responsive Admin Page --- */
+@media (max-width: 767px) {
+    .admin-section { padding: 1rem; }
+    .admin-form input[type="text"], .admin-form input[type="url"] { padding: 0.6rem 0.8rem; }
+    .admin-table { font-size: 0.9em; } /* Slightly smaller table font */
+    .admin-table th, .admin-table td { padding: 0.6rem 0.8rem; }
+    .admin-table { min-width: 600px; } /* Adjust min-width if needed */
+}
+
+@media (max-width: 480px) {
+    .admin-form .form-actions { flex-direction: column; } /* Stack form buttons */
+    .admin-form .submit-button, .admin-form .cancel-button { width: 100%; } /* Full width buttons */
+    .admin-table { min-width: 500px; } /* Further reduce min-width */
+    .admin-table th, .admin-table td { padding: 0.5rem 0.6rem; }
+    .action-button { width: calc(50% - 0.25rem); margin-right: 0.5rem; margin-bottom: 0.5rem;} /* Try 2 buttons per row */
+    .action-button:nth-child(odd) { margin-right: 0.5rem;}
+    .action-button:nth-child(even) { margin-right: 0;}
+
+}

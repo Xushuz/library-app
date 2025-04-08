@@ -1,0 +1,106 @@
+/* client/src/components/BorrowModal.css */
+
+.modal-overlay {
+    position: fixed; /* Stay in place */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Sit on top */
+    padding: 1rem; /* Add padding for smaller screens */
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px; /* Max width of the modal */
+    box-sizing: border-box; /* Include padding in width */
+    animation: fadeIn 0.3s ease-out; /* Simple fade-in animation */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+}
+
+.modal-book-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.modal-field {
+    margin-bottom: 1rem;
+}
+
+.modal-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width */
+    font-size: 1em;
+}
+
+.modal-cost {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1em;
+    text-align: center;
+    color: #333;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between; /* Pushes buttons apart */
+    gap: 1rem; /* Adds space between buttons */
+    margin-top: 1rem;
+}
+
+.modal-button {
+    flex-grow: 1; /* Makes buttons share space equally */
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.confirm-button {
+    background-color: var(--secondary-color, #2ecc71); /* Use CSS variable or default */
+    color: white;
+}
+.confirm-button:hover {
+    background-color: #27ae60; /* Darker green */
+}
+
+.cancel-button {
+    background-color: #e0e0e0; /* Light gray */
+    color: #333;
+}
+.cancel-button:hover {
+    background-color: #bdbdbd; /* Darker gray */
+}

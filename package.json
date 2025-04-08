@@ -1,0 +1,18 @@
+{
+  "name": "library-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Root for library client and server",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
