@@ -125,24 +125,7 @@ Follow these steps to set up and run the project locally.
 *   **Regular User:** You can register a new user through the application's Register page.
 
 ## Project Structure 📁
-
-library-app/
-├── client/ # React Frontend (Create React App)
-│ ├── public/
-│ ├── src/ # Main frontend code (components, pages, services, css)
-│ └── package.json
-├── server/ # Node.js/Express Backend
-│ ├── middleware/ # Auth and Admin checks
-│ ├── routes/ # API route definitions (auth, books, admin, users)
-│ ├── database.js # SQLite setup, schema, seeding
-│ ├── server.js # Express server entry point
-│ ├── library.db # SQLite database file (created on run)
-│ ├── .env # Environment variables (JWT_SECRET) - Gitignored
-│ └── package.json
-├── .gitignore # Specifies intentionally untracked files
-├── package.json # Root dependencies (concurrently) and scripts
-└── README.md # This file
-
+![Project Structure](https://imgur.com/SR8Sz5X.png "Directory Structure")
 
 ## Design Overview 📄
 
