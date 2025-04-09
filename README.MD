@@ -47,9 +47,9 @@ The project demonstrates core concepts including user authentication, role-based
 *   **Styling:** CSS (with basic responsive design using Flexbox, Grid, Media Queries)
 
 ## Screenshots 📸
-![A screenshot of the Catalogue page](https://imgur.com/DYgM5Tj "The Catalogue")
-![A screenshot of the My Books page](https://imgur.com/Ks9TdBI "The Catalogue")
-![A screenshot of the Admin Panel page](https://imgur.com/O1KaHnu "The Catalogue")
+![A screenshot of the Catalogue page](https://imgur.com/DYgM5Tj.png "The Catalogue")
+![A screenshot of the My Books page](https://imgur.com/Ks9TdBI.png "The Catalogue")
+![A screenshot of the Admin Panel page](https://imgur.com/O1KaHnu.png "The Catalogue")
 
 
 ## Setup and Installation ⚙️
